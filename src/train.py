@@ -6,8 +6,15 @@ from sklearn.datasets import load_iris
 import joblib
 
 # Load dataset
-# data = pd.read_csv('../data/iris.csv')
-data = load_iris()
+#data = pd.read_csv('/data/iris.csv')
+iris = load_iris()
+
+data = pd.DataFrame(
+    data=iris.data,
+    columns=iris.feature_names
+)
+data['species'] = iris.target
+print(data)
 
 # Features and labels
 X = data.drop('species', axis=1)
